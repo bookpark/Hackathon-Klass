@@ -1,0 +1,12 @@
+<div>
+    <ul style="list-style: none;">
+        {% for comment in post.comment_set.all %}
+            <li><span style="color: gray;">{{ comment.user.username }}</span>: {{ comment.context }}</li>
+        {% endfor %}
+    </ul>
+</div>
+<form action="{% url 'post:comment_create' post_pk=post.pk %}" method="post">
+    {% csrf_token %}
+    {{ form }}
+    <button class="btn btn-block btn-primary">댓글 작성</button>
+</form>

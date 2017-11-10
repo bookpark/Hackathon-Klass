@@ -9,6 +9,13 @@ class CommentForm(forms.ModelForm):
         fields = (
             'context',
         )
+        widgets = {
+            'context': forms.TextInput(
+                attrs={
+                    'class': 'form-control'
+                }
+            )
+        }
 
 
 

@@ -4,5 +4,5 @@
     {% if post.link %}
         <script src="{{ post.link }}.js"></script>
     {% endif %}
-    {{ form.as_p }}
+    {% include 'include/comment_include.html' with post=post %}
 {% endblock %}
