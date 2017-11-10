@@ -24,7 +24,7 @@ def signin(request):
         form = SigninForm(request.POST)
         if form.is_valid():
             form.login(request)
-        return redirect('member:login')
+            return redirect('index')
     else:
         form = SigninForm
     context = {
