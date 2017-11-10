@@ -27,3 +27,20 @@ class PostForm(forms.ModelForm):
             'context',
             'is_active',
         )
+        widgets = {
+            'title': forms.TextInput(
+                attrs={
+                    'class': 'form-control'
+                }
+            ),
+            'link': forms.URLInput(
+                attrs={
+                    'class': 'form-control'
+                }
+            ),
+            'context': forms.Textarea(
+                attrs={
+                    'class': 'form-control'
+                }
+            )
+        }
