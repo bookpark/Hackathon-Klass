@@ -1,0 +1,55 @@
+{% load static %}
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>WPS-6th</title>
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.css' %}">
+</head>
+<body>
+<!-- Static navbar -->
+<nav class="navbar navbar-default navbar-static-top">
+    <div class="container">
+        <div class="navbar-header" style="min-height:62px;">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar" style="top:10px;">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand navbar-a-tag" href="#" style="font-size:30px; padding-top:30px;">WPS-6th</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+
+            <ul class="nav navbar-nav navbar-a-tag-ul">
+                <li><a class="navbar-a-tag" style="padding-top: 33px;" href="#">강의 자료</a></li>
+                <li><a class="navbar-a-tag" style="padding-top: 33px;" href="#">강의 영상</a></li>
+                <li><a class="navbar-a-tag" style="padding-top: 33px;" href="#">숙제</a></li>
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                {% if reqeust.user.is_authenticated %}
+                    <li><a href="{% url 'logout' %}"></a>logout</li>
+                {% endif %}
+            </ul>
+
+
+        </div>
+    </div>
+</nav>
+<div class="container">
+    <div class="col-lg-6 col-lg-offset-3 col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12">
+        <h1 class="page-header">
+            {% block title %}{% endblock %}
+        </h1>
+        {% block content %}
+        {% endblock %}
+    </div>
+
+</div>
+</body>
+</html>
