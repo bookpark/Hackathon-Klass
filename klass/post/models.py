@@ -1,7 +1,6 @@
 from django.conf import settings
 from django.contrib.contenttypes.models import ContentType
 from django.db import models
-from django.urls import reverse
 
 POST_TYPE_CHOICE = (
     ("DOC", "강의자료",),
@@ -32,10 +31,9 @@ class Post(models.Model):
         return f'{self.type} || {self.title}'
 
 
-
 class Comment(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True)
-    post = models.ForeignKey('Post')
+    post = models.ForeignKey('Post', null=True, blank=True)
     context = models.TextField()
 
     def __str__(self):
