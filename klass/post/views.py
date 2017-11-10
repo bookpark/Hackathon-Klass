@@ -1,11 +1,11 @@
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 
 from .forms import CommentForm
 from .models import Post
 
 
-# fixme
+# List Views
 @login_required(login_url='member:login')
 def document_list(request):
     post_list = Post.objects.filter(type='DOC', is_active=True)
@@ -15,7 +15,6 @@ def document_list(request):
     return render(request, 'post/document_list.html', context)
 
 
-# fixme
 @login_required(login_url='member:login')
 def record_list(request):
     rec_list = Post.objects.filter(type='REC', is_active=True)
@@ -34,6 +33,7 @@ def question_list(request):
     return render(request, 'post/qst_list.html', context)
 
 
+# Detail Views
 @login_required(login_url='member:login')
 def document_question_detail(request, pk):
     post = get_object_or_404(Post, pk=pk)
@@ -55,3 +55,17 @@ def record_detail(request, pk):
     }
     return render(request, 'post/record_detail.html', context)
 
+
+# Create Comment
+@login_required(login_url='member:login')
+def comment_create(request, post_pk):
+    if request.method == "POST":
+        post = get_object_or_404(Post, pk=post_pk)
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.user = request.user
+            comment.post = post
+            comment.save()
+            return redirect(post.get_absolute_url())
+    return redirect('index')

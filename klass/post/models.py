@@ -42,4 +42,4 @@ class Comment(models.Model):
     context = models.TextField()
 
     def __str__(self):
-        return f'{self.post.title}-{self.user.username}'
+        return f'{self.pk}'

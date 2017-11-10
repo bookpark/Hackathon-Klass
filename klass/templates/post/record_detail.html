@@ -4,4 +4,5 @@
     {% if post.link %}
         <iframe width="800" height="480" src="{{ post.link }}" frameborder="0" allowfullscreen></iframe>
     {% endif %}
+    {% include 'include/comment_include.html' with post=post %}
 {% endblock %}
