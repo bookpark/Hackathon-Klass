@@ -13,8 +13,8 @@ class Assignment(models.Model):
 
 
 class SubmitAssignment(models.Model):
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL)
-    assignment = models.ForeignKey('Assignment', on_delete=models.SET_NULL)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True)
+    assignment = models.ForeignKey('Assignment', on_delete=models.SET_NULL, null=True)
     link = models.URLField()
     context = models.TextField()
 
