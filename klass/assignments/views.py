@@ -1,6 +1,7 @@
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 
+from .forms import AssignmentForm
 from member.forms import User
 from .models import Assignment, SubmitAssignment
 
@@ -46,3 +47,20 @@ def submit_assignment_detail(request, pk):
         'my_asm': my_asm,
     }
     return render(request, 'assignment/submit_assignment_detail.html', context)
+
+
+@login_required(login_url='member:login')
+def assignment_add(request):
+    if request.method == 'POST':
+        form = AssignmentForm(request.POST)
+        print('hi')
+        if form.is_valid():
+            print('hi')
+            form.save()
+            return redirect('assignment:assignment_list')
+    else:
+        form = AssignmentForm()
+    context = {
+        'form': form
+    }
+    return render(request, 'assignment/assignment_form.html', context)
