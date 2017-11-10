@@ -1,8 +1,6 @@
 from django.contrib import admin
 
-from .models import Document, Comment, Question, Rec
+from .models import Comment, Post
 
-admin.site.register(Document)
-admin.site.register(Rec)
-admin.site.register(Question)
+admin.site.register(Post)
 admin.site.register(Comment)
