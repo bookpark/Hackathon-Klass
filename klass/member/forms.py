@@ -36,7 +36,33 @@ class SignupForm(UserCreationForm):
         }
 
 
-class LoginForm(forms.Form):
+# class SigninForm(AuthenticationForm):
+#     username = UsernameField(
+#         max_length=254,
+#         widget=forms.TextInput(
+#             attrs={
+#                 'autofocus': True,
+#                 'class': 'form-control'
+#             }),
+#     )
+#     password = forms.CharField(
+#         label="Password",
+#         strip=False,
+#         widget=forms.PasswordInput(
+#             attrs={
+#                 'class': 'form-control',
+#             }
+#         ),
+#     )
+#
+#     def confirm_login_allowed(self, user):
+#         if not user.is_active:
+#             raise forms.ValidationError(
+#                 _("계정이 활성화되지 않았습니다."),
+#                 code='inactive',
+#             )
+
+class SigninForm(forms.Form):
     username = forms.CharField(
         widget=forms.TextInput(
             attrs={
