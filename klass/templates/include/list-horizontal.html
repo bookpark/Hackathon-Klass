@@ -1,3 +1,7 @@
-{% for item in item_list %}
-    <a href="{{ item.get_absolute_url }}"><p>{{ item }}</p></a>
-{% endfor %}
+<ul class="list-group">
+    {% for item in item_list %}
+        <li class="list-group-item" style="vertical-align: middle">
+            <a href="{{ item.get_absolute_url }}" style="text-decoration: none">{{ item }}</a>
+        </li>
+    {% endfor %}
+</ul>

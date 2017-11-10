@@ -1,7 +1,7 @@
 <div>
-    <ul style="list-style: none;">
+    <ul style="list-style: none;" class="list-group">
         {% for comment in post.comment_set.all %}
-            <li><span style="color: gray;">{{ comment.user.username }}</span>: {{ comment.context }}
+            <li class="list-group-item"><span style="color: gray;">{{ comment.user.username }}</span>: {{ comment.context }}
                 {% if comment.user == request.user %}
                 <form action="{% url 'post:comment_delete' comment_pk=comment.pk %}" method="post" style="display: inline-block">
                     {% csrf_token %}
