@@ -13,7 +13,7 @@ urlpatterns = [
     url(r'^member/', include(member_urls, namespace='member')),
     url(r'^post/', include(post_urls, namespace='post')),
     url(r'^asm/', include(assignment_urls, namespace='assignment')),
-    url(r'^$', index, name='index')
+    url(r'^$', index, name='index'),
 ]
 
 urlpatterns += static(
