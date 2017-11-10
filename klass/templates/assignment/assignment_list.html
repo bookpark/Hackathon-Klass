@@ -1,9 +1,9 @@
 {% extends 'base.html' %}
-
+{% block title %}과제{% endblock %}
 {% block content %}
     {% for asm in asm_lists %}
-    <div>
-        {{ asm }}
-    </div>
+        <div>
+            {{ asm }}
+        </div>
     {% endfor %}
 {% endblock %}
