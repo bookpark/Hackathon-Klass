@@ -4,5 +4,6 @@
     {% if post.link %}
         <script src="{{ post.link }}.js"></script>
     {% endif %}
+    {{ post.context }}
     {% include 'include/comment_include.html' with post=post %}
 {% endblock %}

@@ -1,8 +1,11 @@
 {% extends 'base.html' %}
-    {% block title %}
-        질문
-    {% endblock %}
+{% block title %}
+    질문
+{% endblock %}
 {% block content %}
+    <a href="{% url 'post:question_upload' %}">
+        <button class="btn btn-primary btn-block">질문 등록</button>
+    </a>
     <div>
         {% include 'include/list-horizontal.html' with item_list=qst_list item=question %}
     </div>
