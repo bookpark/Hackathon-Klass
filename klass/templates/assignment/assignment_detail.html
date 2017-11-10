@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block title %}{{ asm.title }}{% endblock %}
+{% block content %}
+    {% if asm.link %}
+        <script src="{{ asm.link }}.js"></script>
+    {% endif %}
+    <div>
+        {{ asm.context }}
+    </div>
+{% endblock %}
