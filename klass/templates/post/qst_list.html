@@ -1,6 +1,9 @@
 {% extends 'base.html' %}
 
 {% block content %}
+    {% block title %}
+        질문
+    {% endblock %}
     <div>
         {% include 'include/list-horizontal.html' with item_list=qst_list item=question %}
     </div>

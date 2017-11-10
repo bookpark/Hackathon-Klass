@@ -1,6 +1,9 @@
 {% extends 'base.html' %}
 
 {% block content %}
+    {% block title %}
+        강의 영상
+    {% endblock %}
     <div>
         {% include 'include/list-horizontal.html' with item_list=rec_list item=rec %}
     </div>
