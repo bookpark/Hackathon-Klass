@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
+{% block title %}{{ post.title }}{% endblock %}
 {% block content %}
-    {% block title %}{{ post.title }}{% endblock %}
     {% if post.link %}
         <iframe width="800" height="480" src="{{ post.link }}" frameborder="0" allowfullscreen></iframe>
     {% endif %}
