@@ -2,7 +2,7 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404, redirect
 
 from .forms import CommentForm, PostForm
-from .models import Post
+from .models import Post, Comment
 
 
 # List Views
@@ -67,6 +67,17 @@ def comment_create(request, post_pk):
             comment.user = request.user
             comment.post = post
             comment.save()
+            return redirect(post.get_absolute_url())
+    return redirect('index')
+
+
+@login_required(login_url='member:login')
+def comment_delete(request, comment_pk):
+    if request.method == "POST":
+        comment = get_object_or_404(Comment, pk=comment_pk)
+        if comment.user == request.user:
+            post = get_object_or_404(Post, pk=comment.post_id)
+            comment.delete()
             return redirect(post.get_absolute_url())
     return redirect('index')
 
