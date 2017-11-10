@@ -56,7 +56,7 @@ def record_detail(request, pk):
     return render(request, 'post/record_detail.html', context)
 
 
-# Create Comment
+# Comment
 @login_required(login_url='member:login')
 def comment_create(request, post_pk):
     if request.method == "POST":
@@ -91,7 +91,7 @@ def question_upload(request):
             post.type = 'QST'
             post.user = request.user
             post.save()
-            return redirect('post:doc_qst_detail', pk=post.pk)
+            return redirect(post.get_absolute_url())
     else:
         form = PostForm()
     context = {
@@ -106,4 +106,28 @@ def question_delete(request, post_pk):
         post = get_object_or_404(Post, pk=post_pk)
         post.delete()
         return redirect(post.get_absolute_url())
+    return redirect('index')
+
+
+@login_required(login_url='member:login')
+def post_create(request):
+    if request.user.is_superuser or request.user.is_staff:
+        if request.method == 'POST':
+            form = PostForm(request.POST)
+            form_link = form.data['link']
+            if form_link:
+                if not form_link[:24] == "https://gist.github.com/":
+                    form.add_error('link', "https://gist.github.com/ 으로 시작하는 주소여야 합니다.")
+            if form.is_valid():
+                post = form.save(commit=False)
+                post.user = request.user
+                post.type = "DOC"
+                post.save()
+                return redirect(post.get_absolute_url())
+        else:
+            form = PostForm
+        context = {
+            'form': form,
+        }
+        return render(request, 'post/document_create.html', context)
     return redirect('index')

@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block title %}
+    강의 자료 작성
+{% endblock %}
+{% block content %}
+    <form action="{% url 'post:post_create' %}" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button class="btn btn-lg btn-primary pull-right">글 작성</button>
+    </form>
+{% endblock %}
