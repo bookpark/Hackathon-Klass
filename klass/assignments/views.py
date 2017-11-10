@@ -66,6 +66,8 @@ def assignment_add(request):
 
 @login_required(login_url='member:login')
 def assignment_delete(request, pk):
+    if request.user.is_superuser or request.user.is_staff:
+        return redirect('index')
     if request.method == 'POST':
         asm = get_object_or_404(Assignment, pk=pk)
         asm.delete()
@@ -95,5 +97,7 @@ def submit_assignment_add(request, pk):
 def submit_assignment_delete(request, pk):
     if request.method == 'POST':
         sub_asm = get_object_or_404(SubmitAssignment, pk=pk)
+        if not request.user.is_superuser or not request.user.is_staff or not request.user == sub_asm.user:
+            return redirect('index')
         sub_asm.delete()
     return redirect('assignment:assignment_list')
