@@ -98,3 +98,12 @@ def question_upload(request):
         'form': form,
     }
     return render(request, 'post/question_upload.html', context)
+
+
+@login_required(login_url='member:login')
+def question_delete(request, post_pk):
+    if request.method == 'POST':
+        post = get_object_or_404(Post, pk=post_pk)
+        post.delete()
+        return redirect(post.get_absolute_url())
+    return redirect('index')
