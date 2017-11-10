@@ -1,9 +1,19 @@
 {% extends 'base.html' %}
-    {% block title %}
-        강의 영상
-    {% endblock %}
-{% block content %}
-    <div>
-        {% include 'include/list-horizontal.html' with item_list=rec_list item=rec %}
-    </div>
+{% block title %}
+    강의 영상
 {% endblock %}
+{% block content %}
+    <ul class="list-unstyled video-list-thumbs row">
+        {% for item in rec_list %}
+            <li class="col-lg-3 col-sm-4 col-xs-6">
+                <a href="{{ item.get_absolute_url }}" style="text-decoration: none">
+                    <img class="thumbnail"
+                         style="width: 100%"
+                         src="https://goo.gl/QPrx8W">{{ item }}
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
+
+
