@@ -26,9 +26,9 @@
         <div id="navbar" class="navbar-collapse collapse">
 
             <ul class="nav navbar-nav navbar-a-tag-ul">
-                <li><a class="navbar-a-tag" style="padding-top: 33px;" href="#">강의 자료</a></li>
-                <li><a class="navbar-a-tag" style="padding-top: 33px;" href="#">강의 영상</a></li>
-                <li><a class="navbar-a-tag" style="padding-top: 33px;" href="#">질문</a></li>
+                <li><a class="navbar-a-tag" style="padding-top: 33px;" href="{% url 'post:document_list' %}">강의 자료</a></li>
+                <li><a class="navbar-a-tag" style="padding-top: 33px;" href="{% url 'post:rec_list' %}">강의 영상</a></li>
+                <li><a class="navbar-a-tag" style="padding-top: 33px;" href="{% url 'post:question_list' %}">질문</a></li>
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
