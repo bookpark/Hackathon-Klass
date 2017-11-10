@@ -1,6 +1,3 @@
-import random
-import string
-
 from .base import *
 
 ALLOWED_HOSTS = [
@@ -16,4 +13,5 @@ DATABASES = {
     }
 }
 
-SECRET_KEY = ''.join([random.choice(string.ascii_lowercase) for i in range(40)])
+# SECRET_KEY = ''.join([random.choice(string.ascii_lowercase) for i in range(40)])
+SECRET_KEY = config_secret_common['django']['secret_key']
