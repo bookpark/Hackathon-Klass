@@ -1,6 +1,11 @@
 {% extends 'base.html' %}
 {% block title %}{{ asm.title }}{% endblock %}
 {% block content %}
+    <form action="{% url 'assignment:assignment_delete' pk=asm.pk %}" method="POST">
+    {% csrf_token %}
+    <button class="btn btn-primary pull-right">과제 삭제</button>
+    </form>
+
     {% if asm.link %}
         <script src="{{ asm.link }}.js"></script>
     {% endif %}

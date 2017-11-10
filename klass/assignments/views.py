@@ -1,8 +1,8 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404, redirect
 
-from .forms import AssignmentForm
 from member.forms import User
+from .forms import AssignmentForm
 from .models import Assignment, SubmitAssignment
 
 
@@ -64,3 +64,11 @@ def assignment_add(request):
         'form': form
     }
     return render(request, 'assignment/assignment_form.html', context)
+
+
+@login_required(login_url='member:login')
+def assignment_delete(request, pk):
+    if request.method == 'POST':
+        asm = get_object_or_404(Assignment, pk=pk)
+        asm.delete()
+    return redirect('assignment:assignment_list')
