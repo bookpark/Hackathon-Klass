@@ -131,3 +131,27 @@ def post_create(request):
         }
         return render(request, 'post/document_create.html', context)
     return redirect('index')
+
+
+@login_required(login_url='member:login')
+def rec_create(request):
+    if request.user.is_superuser or request.user.is_staff:
+        if request.method == 'POST':
+            form = PostForm(request.POST)
+            form_link = form.data['link']
+            if form_link:
+                if not form_link[:30] == "https://www.youtube.com/embed/":
+                    form.add_error('link', "https://www.youtube.com/embed/ 으로 시작하는 주소여야 합니다.")
+            if form.is_valid():
+                post = form.save(commit=False)
+                post.user = request.user
+                post.type = "REC"
+                post.save()
+                return redirect(post.get_absolute_url())
+        else:
+            form = PostForm
+        context = {
+            'form': form,
+        }
+        return render(request, 'post/rec_create.html', context)
+    return redirect('index')

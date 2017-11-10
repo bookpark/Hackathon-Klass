@@ -10,6 +10,7 @@
                     <img class="thumbnail"
                          style="width: 100%"
                          src="https://img.youtube.com/vi/{{ item.get_youtube_id }}/0.jpg">{{ item }}
+                    <span class="pull-right">{{ item.created_at }}</span>
                 </a>
             </li>
         {% endfor %}
