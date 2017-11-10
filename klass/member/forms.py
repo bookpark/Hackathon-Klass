@@ -28,7 +28,7 @@ class SignupForm(UserCreationForm):
                     'class': 'form-control'
                 }
             ),
-            'email': forms.EmailField(
+            'email': forms.EmailInput(
                 attrs={
                     'class': 'form-control'
                 }
