@@ -2,10 +2,14 @@
 {% block title %}과제{% endblock %}
 
 {% block content %}
-    <a class="btn btn-primary pull-right" href="{% url 'assignment:assignment_add' %}">과제추가</a>
-    {% for asm in asm_lists %}
-        <div>
-            <a href="{% url 'assignment:assignment_detail' pk=asm.pk %}">{{ asm }}</a>
-        </div>
-    {% endfor %}
+    <div style="height: 50px;">
+        <a class="btn btn-primary btn-lg pull-right" href="{% url 'assignment:assignment_add' %}">과제 추가</a>
+    </div>
+    <ul class="list-group">
+        {% for asm in asm_lists %}
+            <li class="list-group-item">
+                <a href="{% url 'assignment:assignment_detail' pk=asm.pk %}">{{ asm }}</a>
+            </li>
+        {% endfor %}
+    </ul>
 {% endblock %}
