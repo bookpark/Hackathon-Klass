@@ -34,3 +34,15 @@ def submit_assignment_list(request, pk):
         'my_asms': my_asms,
     }
     return render(request, 'assignment/submit_assignment_list.html', context)
+
+
+@login_required(login_url='member:login')
+def submit_assignment_detail(request, pk):
+    my_asm = get_object_or_404(
+        SubmitAssignment,
+        pk=pk,
+    )
+    context = {
+        'my_asm': my_asm,
+    }
+    return render(request, 'assignment/submit_assignment_detail.html', context)

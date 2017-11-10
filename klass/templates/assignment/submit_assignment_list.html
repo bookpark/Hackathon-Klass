@@ -3,7 +3,7 @@
 {% block content %}
     {% for asm in my_asms %}
     <div>
-        {{ asm }}
+        <a href="{% url 'assignment:submit_assignment_detail' pk=asm.pk %}">{{ asm }}</a>
     </div>
     {% endfor %}
 {% endblock %}
