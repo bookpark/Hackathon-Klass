@@ -11,7 +11,7 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^member/', include(member_urls, namespace='member')),
     url(r'^post/', include(post_urls, namespace='post')),
-    url(r'^index/', index, name='index')
+    url(r'^$', index, name='index')
 ]
 
 urlpatterns += static(
