@@ -5,7 +5,7 @@
     {% csrf_token %}
     <button class="btn btn-primary pull-right">과제 삭제</button>
     </form>
-
+    <a class="btn btn-primary pull-right" href="{% url 'assignment:submit_assignment_add' pk=asm.pk %}">과제 제출</a>
     {% if asm.link %}
         <script src="{{ asm.link }}.js"></script>
     {% endif %}

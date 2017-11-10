@@ -1,7 +1,6 @@
 from django import forms
-from django.contrib.admin import widgets
 
-from .models import Assignment
+from .models import Assignment, SubmitAssignment
 
 
 class AssignmentForm(forms.ModelForm):
@@ -31,4 +30,25 @@ class AssignmentForm(forms.ModelForm):
                 }
             ),
             'deadline': forms.DateTimeInput()
+        }
+
+
+class SubmitAssignmentForm(forms.ModelForm):
+    class Meta:
+        model = SubmitAssignment
+        fields = (
+            'link',
+            'context',
+        )
+        widgets = {
+            'link': forms.URLInput(
+                attrs={
+                    'class': 'form-control',
+                }
+            ),
+            'context': forms.Textarea(
+                attrs={
+                    'class': 'form-control',
+                }
+            ),
         }
