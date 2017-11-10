@@ -1,6 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404
 
+from .forms import CommentForm
 from .models import Post
 
 
@@ -35,23 +36,22 @@ def question_list(request):
 
 @login_required(login_url='member:login')
 def document_question_detail(request, pk):
-    post = get_object_or_404(
-        Post,
-        pk=pk,
-    )
+    post = get_object_or_404(Post, pk=pk)
+    form = CommentForm
     context = {
         'post': post,
+        'form': form,
     }
     return render(request, 'post/document_question_detail.html', context)
 
 
 @login_required(login_url='member:login')
 def record_detail(request, pk):
-    post = get_object_or_404(
-        Post,
-        pk=pk,
-    )
+    post = get_object_or_404(Post, pk=pk)
+    form = CommentForm
     context = {
         'post': post,
+        'form': form,
     }
     return render(request, 'post/record_detail.html', context)
+
