@@ -37,20 +37,22 @@ class SignupForm(UserCreationForm):
 
 
 # class SigninForm(AuthenticationForm):
-#     username = UsernameField(
-#         max_length=254,
+#     username = forms.CharField(
+#         max_length=30,
 #         widget=forms.TextInput(
 #             attrs={
-#                 'autofocus': True,
-#                 'class': 'form-control'
+#                 'class': 'form-control',
+#                 'placeholder': 'username',
+#                 'required': 'True',
 #             }),
 #     )
 #     password = forms.CharField(
-#         label="Password",
-#         strip=False,
+#         max_length=30,
 #         widget=forms.PasswordInput(
 #             attrs={
 #                 'class': 'form-control',
+#                 'placeholder': 'Password',
+#                 'required': 'True',
 #             }
 #         ),
 #     )
@@ -58,7 +60,7 @@ class SignupForm(UserCreationForm):
 #     def confirm_login_allowed(self, user):
 #         if not user.is_active:
 #             raise forms.ValidationError(
-#                 _("계정이 활성화되지 않았습니다."),
+#                 "계정이 활성화되지 않았습니다.",
 #                 code='inactive',
 #             )
 
