@@ -1,7 +1,7 @@
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 
-from .forms import CommentForm
+from .forms import CommentForm, PostForm
 from .models import Post
 
 
@@ -55,3 +55,20 @@ def record_detail(request, pk):
     }
     return render(request, 'post/record_detail.html', context)
 
+
+@login_required(login_url='member:login')
+def question_upload(request):
+    if request.method == 'POST':
+        form = PostForm(request.POST)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.type = 'QST'
+            post.user = request.user
+            post.save()
+            return redirect('post:doc_qst_detail', pk=post.pk)
+    else:
+        form = PostForm()
+    context = {
+        'form': form,
+    }
+    return render(request, 'post/question_upload.html', context)

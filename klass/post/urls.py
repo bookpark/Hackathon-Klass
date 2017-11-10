@@ -1,6 +1,6 @@
 from django.conf.urls import url
 
-from .views import document_list, record_list, question_list, document_question_detail, record_detail
+from .views import document_list, record_list, question_list, document_question_detail, record_detail, question_upload
 
 urlpatterns = [
     url(r'^document_list/$', document_list, name='document_list'),
@@ -8,4 +8,5 @@ urlpatterns = [
     url(r'^qst_list/$', question_list, name='question_list'),
     url(r'^doc_qst_detail/(?P<pk>\d+)/$', document_question_detail, name='doc_qst_detail'),
     url(r'^rec_detail/(?P<pk>\d+)/$', record_detail, name='record_detail'),
+    url(r'^question_upload/$', question_upload, name='question_upload'),
 ]

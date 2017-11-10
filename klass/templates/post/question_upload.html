@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block title %}
+    질문 등록
+{% endblock %}
+{% block content %}
+    <div>
+        <form action="{% url 'post:question_upload' %}" method="POST">
+            {% csrf_token %}
+            {{ form }}
+            <button class="btn btn-primary btn-block">등록</button>
+        </form>
+    </div>
+{% endblock %}

@@ -4,5 +4,6 @@
     {% if post.link %}
         <script src="{{ post.link }}.js"></script>
     {% endif %}
+    {{ post.context }}
     {{ form.as_p }}
 {% endblock %}
