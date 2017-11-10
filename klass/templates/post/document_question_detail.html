@@ -1,4 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
-    {{ post.title }}
+    {% block title %}{{ post.title }}{% endblock %}
+    {% if post.link %}
+        <script src="{{ post.link }}.js"></script>
+    {% endif %}
 {% endblock %}

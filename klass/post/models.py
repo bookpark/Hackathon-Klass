@@ -1,6 +1,7 @@
 from django.conf import settings
 from django.contrib.contenttypes.models import ContentType
 from django.db import models
+from django.urls import reverse
 
 POST_TYPE_CHOICE = (
     ("DOC", "강의자료",),
@@ -10,10 +11,9 @@ POST_TYPE_CHOICE = (
 )
 
 TYPE_URL_MATCH = {
-    "DOC": "post:post_detail",
-    "REC": "post:rec_detail",
-    "QST": "post:qst_detail",
-    "ASM": "post:asm_detail",
+    "DOC": "post:doc_qst_detail",
+    "REC": "post:record_detail",
+    "QST": "post:doc_qst_detail",
 }
 
 
@@ -29,6 +29,9 @@ class Post(models.Model):
 
     def __str__(self):
         return f'{self.type} || {self.title}'
+
+    def get_absolute_url(self):
+        return reverse(TYPE_URL_MATCH[self.type], kwargs={'pk': self.pk})
 
 
 class Comment(models.Model):
