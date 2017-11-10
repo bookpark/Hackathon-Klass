@@ -12,8 +12,11 @@
     <div>
         {{ asm.context }}
     </div>
-    <div>과제 제출한 사람</div>
+    <br>
+    <hr>
+    <br>
+    <div><h3>과제 제출한 사람</h3></div>
     {% for list in asm.submitassignment_set.all %}
-        <a href="{% url 'assignment:submit_assignment_detail' pk=list.pk %}">{{ list.user }}</a>
+        <h4><a href="{% url 'assignment:submit_assignment_detail' pk=list.pk %}">{{ list.user }}</a></h4>
     {% endfor %}
 {% endblock %}
