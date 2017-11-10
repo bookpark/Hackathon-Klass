@@ -1,3 +1,5 @@
+import re
+
 from django.conf import settings
 from django.contrib.contenttypes.models import ContentType
 from django.db import models
@@ -32,6 +34,17 @@ class Post(models.Model):
 
     def get_absolute_url(self):
         return reverse(TYPE_URL_MATCH[self.type], kwargs={'pk': self.pk})
+
+    @staticmethod
+    def get_youtube_id():
+        pattern = re.compile(
+            r'(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/ ]{11})',
+            re.IGNORECASE)
+        post = Post.objects.filter(type='REC')[0]
+        url = post.link
+        match = re.search(pattern, url)
+        youtube_id = match.group(1)
+        return youtube_id
 
 
 class Comment(models.Model):

@@ -8,6 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>WPS-6th</title>
     <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/post.css' %}">
 </head>
 <body>
 <!-- Static navbar -->
@@ -36,7 +37,8 @@
                         <a class="navbar-a-tag" style="padding-top: 33px;" href="{% url 'post:question_list' %}">질문</a>
                     </li>
                     <li>
-                        <a class="navbar-a-tag" style="padding-top: 33px;" href="{% url 'assignment:assignment_list' %}">과제</a>
+                        <a class="navbar-a-tag" style="padding-top: 33px;"
+                           href="{% url 'assignment:assignment_list' %}">과제</a>
                     </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
