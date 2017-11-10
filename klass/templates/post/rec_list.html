@@ -2,8 +2,6 @@
 
 {% block content %}
     <div>
-        {% for rec in rec_list %}
-            <p>{{ rec }}</p>
-        {% endfor %}
+        {% include 'include/list-horizontal.html' with item_list=rec_list item=rec %}
     </div>
 {% endblock %}
