@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+    {% if my_asm.link %}
+        <script src="{{ my_asm.link }}.js"></script>
+    {% endif %}
+    <div>
+        {{ my_asm.context }}
+    </div>
+{% endblock %}
