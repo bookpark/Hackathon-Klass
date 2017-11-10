@@ -85,7 +85,7 @@ TEMPLATES = [
 ]
 
 # Auth
-# AUTH_USER_MODEL = 'member.User'
+AUTH_USER_MODEL = 'member.User'
 # LOGIN_URL = 'member:signin'
 AUTH_PASSWORD_VALIDATORS = [
     {
