@@ -43,10 +43,11 @@
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     {% if request.user.is_superuser %}
+                        <li><a style="padding-top: 33px;" href="{% url 'post:rec_create' %}">영상 업로드</a></li>
                         <li><a style="padding-top: 33px;" href="{% url 'post:post_create' %}">문서 작성</a></li>
                     {% endif %}
                     {% if request.user.is_authenticated %}
-                        <li><a style="padding-top: 33px;" href="{% url 'member:logout' %}">logout</a></li>
+                        <li><a style="padding-top: 33px;" href="{% url 'member:logout' %}">로그아웃</a></li>
                     {% endif %}
                 </ul>
             </div>

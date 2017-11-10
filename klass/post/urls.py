@@ -1,11 +1,12 @@
 from django.conf.urls import url
 
 from .views import document_list, record_list, question_list, document_question_detail, record_detail, comment_create, \
-    question_upload, comment_delete, question_delete, post_create
+    question_upload, comment_delete, question_delete, post_create, rec_create
 
 urlpatterns = [
     # post create
     url(r'^create/$', post_create, name='post_create'),
+    url(r'^rec_create/$', rec_create, name='rec_create'),
     # list views
     url(r'^document_list/$', document_list, name='document_list'),
     url(r'^rec_list/$', record_list, name='rec_list'),
