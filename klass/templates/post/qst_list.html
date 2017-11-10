@@ -3,9 +3,11 @@
     질문
 {% endblock %}
 {% block content %}
+    <div style="height: 50px;">
     <a href="{% url 'post:question_upload' %}">
         <button class="btn btn-primary btn-lg pull-right">질문 등록</button>
     </a>
+        </div>
     <div>
         {% include 'include/list-horizontal.html' with item_list=qst_list item=question %}
     </div>
