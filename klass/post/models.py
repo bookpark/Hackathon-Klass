@@ -28,7 +28,7 @@ class Post(models.Model):
     is_active = models.BooleanField(default=True)
 
     def __str__(self):
-        return f'{self.type} || {self.title}'
+        return f'{self.title}'
 
     def get_absolute_url(self):
         return reverse(TYPE_URL_MATCH[self.type], kwargs={'pk': self.pk})
