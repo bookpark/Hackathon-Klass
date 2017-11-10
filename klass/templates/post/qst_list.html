@@ -2,8 +2,6 @@
 
 {% block content %}
     <div>
-        {% for question in qst_list %}
-            <p>{{ question }}</p>
-        {% endfor %}
+        {% include 'include/list-horizontal.html' with item_list=question_list item=question %}
     </div>
 {% endblock %}
