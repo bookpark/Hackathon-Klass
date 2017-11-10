@@ -89,3 +89,11 @@ def submit_assignment_add(request, pk):
         'form': form
     }
     return render(request, 'assignment/submit_assignment_form.html', context)
+
+
+@login_required(login_url='member:login')
+def submit_assignment_delete(request, pk):
+    if request.method == 'POST':
+        sub_asm = get_object_or_404(SubmitAssignment, pk=pk)
+        sub_asm.delete()
+    return redirect('assignment:assignment_list')

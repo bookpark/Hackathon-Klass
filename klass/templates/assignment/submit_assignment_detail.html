@@ -1,5 +1,9 @@
 {% extends 'base.html' %}
 {% block content %}
+    <form action="{% url 'assignment:submit_assignment_delete' pk=my_asm.pk %}" method="POST">
+    {% csrf_token %}
+    <button class="btn btn-primary pull-right">과제 제출 삭제</button>
+    </form>
     {% if my_asm.link %}
         <script src="{{ my_asm.link }}.js"></script>
     {% endif %}
