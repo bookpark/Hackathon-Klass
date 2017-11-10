@@ -35,13 +35,11 @@ class Post(models.Model):
     def get_absolute_url(self):
         return reverse(TYPE_URL_MATCH[self.type], kwargs={'pk': self.pk})
 
-    @staticmethod
-    def get_youtube_id():
+    def get_youtube_id(self):
         pattern = re.compile(
             r'(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/ ]{11})',
             re.IGNORECASE)
-        post = Post.objects.filter(type='REC')[0]
-        url = post.link
+        url = self.link
         match = re.search(pattern, url)
         youtube_id = match.group(1)
         return youtube_id
