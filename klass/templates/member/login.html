@@ -3,4 +3,7 @@
     <div>
         {% include 'include/form-horizontal.html' with form=form submit_text='로그인' %}
     </div>
+    <div style="margin-top: 10px">
+        <a href="{% url 'member:signup' %}" class="btn btn-block btn-warning">회원가입</a>
+    </div>
 {% endblock %}
