@@ -49,6 +49,9 @@ INSTALLED_APPS = [
 
     'django_extensions',
     'storages',
+
+    'post',
+    'member',
 ]
 
 MIDDLEWARE = [
